@@ -20,7 +20,7 @@ const Contact = () => {
     setIsSuccess(false);
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', { // Ensure this URL matches your backend
+      const response = await fetch('https://rushikesh-portfolio-izh8.onrender.com', { // Ensure this URL matches your backend
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
