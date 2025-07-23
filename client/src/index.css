@@ -1,0 +1,7 @@
+/* client/src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add any global custom styles here if needed */
+/* The custom styles for glitch, terminal-shadow etc. are now in individual component files or App.jsx <style> tag */
