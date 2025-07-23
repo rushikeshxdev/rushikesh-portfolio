@@ -40,10 +40,10 @@ app.get('/', (req, res) => {
 
 // API Routes
 app.use('/api/contact', require('./routes/contactRoutes'));
-app.use('/api/projects', require('./routes/projectRoutes'));
-app.use('/api/skills', require('./routes/skillRoutes'));
-app.use('/api/achievements', require('./routes/achievementRoutes'));
-app.use('/api/certifications', require('./routes/certificationRoutes'));
+app.use('/api/projects', require('./routes/projectRoutes'));       // New Projects Route
+app.use('/api/skills', require('./routes/skillRoutes'));           // New Skills Route
+app.use('/api/achievements', require('./routes/achievementRoutes')); // New Achievements Route
+app.use('/api/certifications', require('./routes/certificationRoutes')); // New Certifications Route
 
 // Start the server
 app.listen(PORT, () => {

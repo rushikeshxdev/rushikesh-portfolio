@@ -9,7 +9,7 @@ const Certifications = () => {
   useEffect(() => {
     const fetchCertifications = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/certifications'); // Fetch from your backend
+        const response = await fetch('https://rushikesh-portfolio-izh8.onrender.com/api/certifications/'); // Fetch from your backend
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

@@ -9,7 +9,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('https://rushikesh-portfolio-izh8.onrender.com'); // Fetch from your backend
+        const response = await fetch('https://rushikesh-portfolio-api.onrender.com/api/projects'); // Fetch from your backend
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
