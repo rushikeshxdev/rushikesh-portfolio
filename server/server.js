@@ -8,18 +8,24 @@ const app = express();
 const PORT = process.env.PORT || 5000; // Use port from .env or default to 5000
 
 // --- CORS Configuration ---
+// Dynamically set allowed origins based on environment
 const allowedOrigins = [
   'http://localhost:5173', // Your frontend development URL
-  // Add your deployed frontend URL here when ready for production
-  // 'https://your-deployed-frontend.com'
 ];
+
+// Add deployed frontend URL if available in environment variables
+// This is crucial for Render to allow requests from your Vercel frontend
+if (process.env.FRONTEND_URL) {
+  allowedOrigins.push(process.env.FRONTEND_URL);
+}
 
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
+    // Check if the origin is in our allowed list
     if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
       return callback(new Error(msg), false);
     }
     return callback(null, true);
@@ -42,10 +48,10 @@ app.get('/', (req, res) => {
 
 // API Routes
 app.use('/api/contact', require('./routes/contactRoutes'));
-app.use('/api/projects', require('./routes/projectRoutes'));       // New Projects Route
-app.use('/api/skills', require('./routes/skillRoutes'));           // New Skills Route
-app.use('/api/achievements', require('./routes/achievementRoutes')); // New Achievements Route
-app.use('/api/certifications', require('./routes/certificationRoutes')); // New Certifications Route
+app.use('/api/projects', require('./routes/projectRoutes'));       // Projects Route
+app.use('/api/skills', require('./routes/skillRoutes'));           // Skills Route
+app.use('/api/achievements', require('./routes/achievementRoutes')); // Achievements Route
+app.use('/api/certifications', require('./routes/certificationRoutes')); // Certifications Route
 
 
 // Start the server
